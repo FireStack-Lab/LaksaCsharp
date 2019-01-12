@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaksaCsharp", "LaksaCsharp\LaksaCsharp.csproj", "{A0CC8D48-9107-4177-AA0C-A80F8EA14E94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaksaTest", "LaksaTest\LaksaTest.csproj", "{CBC7D2AB-8E7B-4D00-BDD4-7170380AF175}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0CC8D48-9107-4177-AA0C-A80F8EA14E94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0CC8D48-9107-4177-AA0C-A80F8EA14E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0CC8D48-9107-4177-AA0C-A80F8EA14E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0CC8D48-9107-4177-AA0C-A80F8EA14E94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBC7D2AB-8E7B-4D00-BDD4-7170380AF175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC7D2AB-8E7B-4D00-BDD4-7170380AF175}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC7D2AB-8E7B-4D00-BDD4-7170380AF175}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBC7D2AB-8E7B-4D00-BDD4-7170380AF175}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
