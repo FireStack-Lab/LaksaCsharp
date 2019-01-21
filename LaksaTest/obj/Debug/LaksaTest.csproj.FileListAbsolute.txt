@@ -1,5 +1,0 @@
-C:\Laksa\LaksaCsharp\LaksaTest\bin\Debug\LaksaTest.dll
-C:\Laksa\LaksaCsharp\LaksaTest\bin\Debug\LaksaTest.pdb
-C:\Laksa\LaksaCsharp\LaksaTest\obj\Debug\LaksaTest.csprojResolveAssemblyReference.cache
-C:\Laksa\LaksaCsharp\LaksaTest\obj\Debug\LaksaTest.dll
-C:\Laksa\LaksaCsharp\LaksaTest\obj\Debug\LaksaTest.pdb
