@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contract\ABI.cs" />
+    <Compile Include="Contract\CallParams.cs" />
+    <Compile Include="Contract\ContractStatus.cs" />
+    <Compile Include="Contract\Field.cs" />
+    <Compile Include="Contract\Transition.cs" />
+    <Compile Include="Contract\Value.cs" />
     <Compile Include="Crypto\KDFParams.cs" />
     <Compile Include="Crypto\KDFType.cs" />
     <Compile Include="Crypto\KeyStore.cs" />
@@ -65,7 +71,6 @@
   <ItemGroup>
     <Folder Include="Account\" />
     <Folder Include="BlockChain\" />
-    <Folder Include="Contract\" />
     <Folder Include="Jsonrpc\" />
     <Folder Include="Proto\" />
     <Folder Include="Transaction\" />
