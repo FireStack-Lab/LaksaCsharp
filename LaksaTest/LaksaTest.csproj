@@ -52,11 +52,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Account\AccountTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ByteUtilTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Account\" />
     <Folder Include="Contract\" />
     <Folder Include="Crypto\" />
     <Folder Include="Jsonrpc\" />
@@ -67,6 +67,9 @@
       <Project>{A0CC8D48-9107-4177-AA0C-A80F8EA14E94}</Project>
       <Name>LaksaCsharp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
