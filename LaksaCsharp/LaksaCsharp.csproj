@@ -58,6 +58,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\Account.cs" />
+    <Compile Include="BlockChain\BlockchainInfo.cs" />
+    <Compile Include="BlockChain\BlockList.cs" />
+    <Compile Include="BlockChain\BlockShort.cs" />
+    <Compile Include="BlockChain\BlockType.cs" />
+    <Compile Include="BlockChain\Contract.cs" />
+    <Compile Include="BlockChain\DsBlock.cs" />
+    <Compile Include="BlockChain\DsBlockHeader.cs" />
+    <Compile Include="BlockChain\EventLogEntry.cs" />
+    <Compile Include="BlockChain\EventParam.cs" />
+    <Compile Include="BlockChain\ShardingStructure.cs" />
+    <Compile Include="BlockChain\TransactionList.cs" />
+    <Compile Include="BlockChain\TransactionReceipt.cs" />
+    <Compile Include="BlockChain\TxBlock.cs" />
+    <Compile Include="BlockChain\TxBlockHeader.cs" />
     <Compile Include="Contract\ABI.cs" />
     <Compile Include="Contract\CallParams.cs" />
     <Compile Include="Contract\ContractStatus.cs" />
@@ -78,7 +92,6 @@
     <Compile Include="Utils\HashUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BlockChain\" />
     <Folder Include="Jsonrpc\" />
     <Folder Include="Proto\" />
     <Folder Include="Transaction\" />
