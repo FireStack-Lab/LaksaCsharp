@@ -99,6 +99,7 @@
     <Compile Include="Transaction\TransactionPayload.cs" />
     <Compile Include="Utils\ByteUtil.cs" />
     <Compile Include="Utils\HashUtil.cs" />
+    <Compile Include="Utils\Validation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Proto\" />
