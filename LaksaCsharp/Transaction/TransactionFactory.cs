@@ -9,29 +9,30 @@ namespace LaksaCsharp.Transaction
 {
     public class TransactionFactory
     {
-        public static Transaction buildTransaction(TxParams param, HttpProvider provider, TxStatus status)
+        public static Transaction BuildTransaction(TxParams param, HttpProvider provider, TxStatus status)
         {
-            return Transaction.builder()
-                    .ID(params.getID())
-                    .version(params.getVersion())
-                    .nonce(params.getNonce())
-                    .amount(params.getAmount())
-                    .gasPrice(params.getGasPrice())
-                    .gasLimit(params.getGasLimit())
-                    .signature(params.getSignature())
-                    .receipt(params.getReceipt())
-                    .senderPubKey(params.getSenderPubKey())
-                    .toAddr(params.getToAddr())
-                    .code(params.getCode())
-                    .data(params.getData())
-                    .provider(provider)
-                    .status(status)
-                    .build();
+            return new Transaction()
+            {
+                ID = param.ID,
+                Version = param.Version,
+                Nonce = param.Nonce,
+                Amount = param.Amount,
+                GasPrice = param.GasPrice,
+                GasLimit = param.GasLimit,
+                Signature = param.Signature,
+                Receipt = param.Receipt,
+                SenderPubKey = param.SenderPubKey,
+                ToAddr = param.ToAddr,
+                Code = param.Code,
+                Data = param.Data,
+                Provider = provider,
+                Status = status,
+            };
         }
 
-        public static HttpProvider.CreateTxResult sendTransaction(Transaction signedTx)
+        public static CreateTxResult sendTransaction(Transaction signedTx)
         {
-        return signedTx.getProvider().createTransaction(signedTx.toTransactionPayload());
+            return signedTx.Provider.CreateTransaction(signedTx.ToTransactionPayload());
         }
     }
 

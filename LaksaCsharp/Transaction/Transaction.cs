@@ -26,7 +26,7 @@ namespace LaksaCsharp.Transaction
         public string Code { get; set; }
         public string Data { get; set; }
 
-        private HttpProvider provider;
+        public HttpProvider Provider { get; set; }
         public TxStatus Status { get; set; }
 
         public TxParams ToTransactionParam()
@@ -116,7 +116,7 @@ namespace LaksaCsharp.Transaction
             Transaction response;
             try
             {
-                response = this.provider.GetTransaction(txHash);
+                response = this.Provider.GetTransaction(txHash);
             }
             catch (IOException e)
             {
