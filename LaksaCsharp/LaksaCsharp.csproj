@@ -34,6 +34,10 @@
       <HintPath>..\packages\BouncyCastle.1.8.4\lib\BouncyCastle.Crypto.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -96,17 +100,22 @@
     <Compile Include="Jsonrpc\Rep.cs" />
     <Compile Include="Jsonrpc\Req.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proto\Message.cs" />
+    <Compile Include="Transaction\Transaction.cs" />
     <Compile Include="Transaction\TransactionPayload.cs" />
+    <Compile Include="Transaction\TxParams.cs" />
+    <Compile Include="Transaction\TxReceipt.cs" />
+    <Compile Include="Transaction\TxStatus.cs" />
     <Compile Include="Utils\ByteUtil.cs" />
     <Compile Include="Utils\HashUtil.cs" />
+    <Compile Include="Utils\TransactionUtil.cs" />
     <Compile Include="Utils\Validation.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Proto\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Proto\message.proto" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\System.Security.Cryptography.Hashing.Algorithms.Analyzers.1.1.0\analyzers\dotnet\cs\System.Security.Cryptography.Hashing.Algorithms.Analyzers.dll" />

@@ -302,7 +302,7 @@ namespace LaksaCsharp.Jsonrpc
         }
 
 
-        /*public Transaction GetTransaction(string hash)
+        public Transaction.Transaction GetTransaction(string hash)
         {
             Req<string> req = new Req<string>();
             req.Id = "1";
@@ -315,10 +315,10 @@ namespace LaksaCsharp.Jsonrpc
             request.AddJsonBody(req);
             IRestResponse response = client.Post(request);
 
-            Rep<Transaction> rep = JsonConvert.DeserializeObject<Rep<Transaction>>(response.Content);
+            Rep<Transaction.Transaction> rep = JsonConvert.DeserializeObject<Rep<Transaction.Transaction>>(response.Content);
 
             return rep.Result;
-        }*/
+        }
 
         public TransactionList GetRecentTransactions()
         {
