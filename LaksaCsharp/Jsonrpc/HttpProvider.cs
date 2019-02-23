@@ -204,6 +204,25 @@ namespace LaksaCsharp.Jsonrpc
             return rep.Result;
         }
 
+        public double GetTxBlockRate()
+        {
+            Req<string> req = new Req<string>();
+            req.Id = "1";
+            req.Jsonrpc = "2.0";
+            req.Method = "GetTxBlockRate";
+            req.Params = new string[] { "" };
+
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(req);
+            IRestResponse response = client.Post(request);
+
+            Rep<double> rep = JsonConvert.DeserializeObject<Rep<double>>(response.Content);
+
+            return rep.Result;
+        }
+
+
         public DsBlock GetLatestDsBlock()
         {
             Req<string> req = new Req<string>();
@@ -220,6 +239,20 @@ namespace LaksaCsharp.Jsonrpc
             Rep<DsBlock> rep = JsonConvert.DeserializeObject<Rep<DsBlock>>(response.Content);
 
             return rep.Result;
+        }
+
+        public string GetNumTransactions()
+        {
+            Req<string> req = new Req<string>();
+            req.Id = "1";
+            req.Jsonrpc = "2.0";
+            req.Method = "GetNumTransactions";
+            req.Params = new string[] { "" };
+
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(req);
+            IRestResponse response = client.Post(request);
         }
 
         public TxBlock GetLatestTxBlock()
