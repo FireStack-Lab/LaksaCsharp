@@ -275,6 +275,24 @@ namespace LaksaCsharp.Jsonrpc
             return rep.Result;
         }
 
+        public string GetCurrentMiniEpoch()
+        {
+            Req<string> req = new Req<string>();
+            req.Id = "1";
+            req.Jsonrpc = "2.0";
+            req.Method = "GetCurrentMiniEpoch";
+            req.Params = new string[] { "" };
+
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(req);
+            IRestResponse response = client.Post(request);
+            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
+
+            return rep.Result;
+        }
+
+
         public TxBlock GetLatestTxBlock()
         {
             Req<string> req = new Req<string>();
