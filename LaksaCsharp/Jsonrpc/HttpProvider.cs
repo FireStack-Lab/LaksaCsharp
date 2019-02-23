@@ -56,6 +56,23 @@ namespace LaksaCsharp.Jsonrpc
             return rep.Result;
         }
 
+        public Rep<ShardingStructure> GetShardingStructure()
+        {
+            Req<string> req = new Req<string>();
+            req.Id = "1";
+            req.Jsonrpc = "2.0";
+            req.Method = "GetShardingStructure";
+            req.Params = new string[] { "" };
+
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(req);
+            IRestResponse response = client.Post(request);
+
+            Rep<ShardingStructure> rep = JsonConvert.DeserializeObject<Rep<ShardingStructure>>(response.Content);
+            return rep;
+        }
+
 
         public BlockList GetDSBlockListing(int pageNumber)
         {
@@ -326,6 +343,23 @@ namespace LaksaCsharp.Jsonrpc
             return rep.Result;
         }
 
+        public Rep<int?> GetPrevDSDifficulty()
+        {
+            Req<string> req = new Req<string>();
+            req.Id = "1";
+            req.Jsonrpc = "2.0";
+            req.Method = "GetPrevDSDifficulty";
+            req.Params = new string[] { "" };
+
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(req);
+            IRestResponse response = client.Post(request);
+            Rep<int?> rep = JsonConvert.DeserializeObject<Rep<int?>>(response.Content);
+
+            return rep;
+        }
+
         public TxBlock GetLatestTxBlock()
         {
             Req<string> req = new Req<string>();
@@ -401,6 +435,25 @@ namespace LaksaCsharp.Jsonrpc
              return rep.Result;
          }*/
 
+        public Rep<string> GetContractAddressFromTransactionID(string address)
+        {
+            Req<string> req = new Req<string>();
+            req.Id = "1";
+            req.Jsonrpc = "2.0";
+            req.Method = "GetContractAddressFromTransactionID";
+            req.Params = new string[] { address };
+
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(req);
+            IRestResponse response = client.Post(request);
+
+            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
+
+            return rep;
+        }
+
+
         /* public List<Contract.State> GetSmartContractState(String address)
          {
              Req<string> req = new Req<string>();
@@ -408,7 +461,7 @@ namespace LaksaCsharp.Jsonrpc
              req.Jsonrpc = "2.0";
              req.Method = "GetSmartContractState";
              req.Params = new string[] { address
-     };
+        };
 
              RestClient client = new RestClient(url);
              RestRequest request = new RestRequest();
@@ -428,7 +481,7 @@ namespace LaksaCsharp.Jsonrpc
             req.Jsonrpc = "2.0";
             req.Method = "GetSmartContractInit";
             req.Params = new string[] { address
-    };
+        };
 
             RestClient client = new RestClient(url);
             RestRequest request = new RestRequest();
@@ -515,31 +568,86 @@ namespace LaksaCsharp.Jsonrpc
             return rep.Result;
         }
 
-    }
-
-    public class BalanceResult
-    {
-        public string Balance { get; set; }
-        public string Nonce { get; set; }
-    }
-
-    public class ContractResult
-    {
-        public string Code { get; set; }
-    }
-
-    public class CreateTxResult
-    {
-        public string Info { get; set; }
-        public string TranID { get; set; }
-
-
-        public override string ToString()
+        public Rep<List<List<string>>> GetTransactionsForTxBlock(string blockNum)
         {
-            return "CreateTxResult{" +
-                    "Info='" + Info + '\'' +
-                    ", TranID='" + TranID + '\'' +
-                    '}';
+            Req<string> req = new Req<string>();
+            req.Id = "1";
+            req.Jsonrpc = "2.0";
+            req.Method = "GetTransactionsForTxBlock";
+            req.Params = new string[] { blockNum };
+
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(req);
+            IRestResponse response = client.Post(request);
+
+            Rep<List<List<string>>> rep = JsonConvert.DeserializeObject<Rep<List<List<string>>>>(response.Content);
+
+            return rep;
+        }
+
+        public Rep<string> GetNumTxnsTxEpoch()
+        {
+            Req<string> req = new Req<string>();
+            req.Id = "1";
+            req.Jsonrpc = "2.0";
+            req.Method = "GetNumTxnsTxEpoch";
+            req.Params = new string[] { "" };
+
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(req);
+            IRestResponse response = client.Post(request);
+
+            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
+
+            return rep;
+        }
+
+        public Rep<string> GetNumTxnsDSEpoch()
+        {
+            Req<string> req = new Req<string>();
+            req.Id = "1";
+            req.Jsonrpc = "2.0";
+            req.Method = "GetNumTxnsDSEpoch";
+            req.Params = new string[] { "" };
+
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(req);
+            IRestResponse response = client.Post(request);
+
+            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
+
+            return rep;
         }
     }
+
+}
+
+public class BalanceResult
+{
+    public string Balance { get; set; }
+    public string Nonce { get; set; }
+}
+
+public class ContractResult
+{
+    public string Code { get; set; }
+}
+
+public class CreateTxResult
+{
+    public string Info { get; set; }
+    public string TranID { get; set; }
+
+
+    public override string ToString()
+    {
+        return "CreateTxResult{" +
+                "Info='" + Info + '\'' +
+                ", TranID='" + TranID + '\'' +
+                '}';
+    }
+}
 }
