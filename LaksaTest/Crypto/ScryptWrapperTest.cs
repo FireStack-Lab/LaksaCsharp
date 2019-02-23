@@ -13,7 +13,7 @@ namespace LaksaTest.Crypto
     public class ScryptWrapperTest
     {
         [TestMethod]
-        public void generateDerivedScryptKey()
+        public void GenerateDerivedScryptKey()
         {
             ScryptWrapper scryptWrapper = new ScryptWrapper();
             ScryptParams param = new ScryptParams();
