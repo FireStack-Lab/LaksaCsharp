@@ -309,6 +309,23 @@ namespace LaksaCsharp.Jsonrpc
             return rep.Result;
         }
 
+        public int GetPrevDifficulty()
+        {
+            Req<string> req = new Req<string>();
+            req.Id = "1";
+            req.Jsonrpc = "2.0";
+            req.Method = "GetPrevDifficulty";
+            req.Params = new string[] { "" };
+
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(req);
+            IRestResponse response = client.Post(request);
+            Rep<int> rep = JsonConvert.DeserializeObject<Rep<int>>(response.Content);
+
+            return rep.Result;
+        }
+
         public TxBlock GetLatestTxBlock()
         {
             Req<string> req = new Req<string>();
