@@ -112,7 +112,12 @@
     <Compile Include="Utils\TransactionUtil.cs" />
     <Compile Include="Utils\Validation.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\KeyStore\KeyStore.csproj">
+      <Project>{6898615A-690F-41B5-A247-E9C4A91C1355}</Project>
+      <Name>KeyStore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

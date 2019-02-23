@@ -10,7 +10,7 @@ namespace LaksaCsharp.Utils
     {
         private static char[] hexArray = "0123456789ABCDEF".ToCharArray();
 
-        public static string ByteArrayToHexString(byte[] bytes)
+        public static string ByteArrayToHexString(sbyte[] bytes)
         {
             StringBuilder sb = new StringBuilder(bytes.Length * 3);
             foreach (byte b in bytes)
@@ -18,6 +18,31 @@ namespace LaksaCsharp.Utils
                 sb.Append(Convert.ToString(b, 16).PadLeft(2, '0').PadRight(3, ' '));
             }
             return sb.ToString().ToUpper();
+        }
+
+        public static string ByteArrayToHexString(byte[] bytes)
+        {
+            StringBuilder sb = new StringBuilder(bytes.Length * 3);
+            foreach (byte b in bytes)
+            {
+                sb.Append(Convert.ToString(b, 16).PadLeft(2, '0').PadRight(3, ' '));
+            }
+            return sb.ToString().ToUpper().Replace(" ","");
+        }
+
+        public static sbyte[] ToSbyte(byte[] bytes)
+        {
+            sbyte[] sbytes = new sbyte[bytes.Length];
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                if (bytes[i] > 127)
+                    sbytes[i] = (sbyte)(bytes[i] - 256);
+                else
+                    sbytes[i] = (sbyte)bytes[i];
+            }
+
+            return sbytes;
         }
 
         public static byte[] HexStringToByteArray(string hexString)

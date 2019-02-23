@@ -1,4 +1,5 @@
 ﻿using LaksaCsharp.Utils;
+using Nethereum.KeyStore.Crypto;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -74,25 +75,15 @@ namespace LaksaCsharp.Crypto
             byte[] encryptKey = new byte[16];
             Array.Copy(derivedKey, encryptKey, 16);
 
-
-            System.Security.Cryptography.RijndaelManaged rm = new System.Security.Cryptography.RijndaelManaged
-            {
-                Key = encryptKey,
-                Mode = CipherMode.CBC,
-                Padding = System.Security.Cryptography.PaddingMode.None
-            };
-            //TODO 加密方法待完善
-
-            System.Security.Cryptography.ICryptoTransform cTransform = rm.CreateEncryptor();
-            byte[] ciphertext = cTransform.TransformFinalBlock(ByteUtil.HexStringToByteArray(privateKey), 0, ByteUtil.HexStringToByteArray(privateKey).Length);
-
+            KeyStoreCrypto cry = new KeyStoreCrypto();
+            byte[] ciphertext = cry.GenerateAesCtrCipher(iv, encryptKey, ByteUtil.HexStringToByteArray(privateKey));
             byte[] mac = HashUtil.GenerateMac(derivedKey, ciphertext);
 
             //build struct
             CipherParams cipherParams = new CipherParams();
             cipherParams.Iv = ByteUtil.ByteArrayToHexString(iv);
 
-            Kdfparams kp = new Kdfparams(salt);
+            Kdfparams kp = new Kdfparams(ByteUtil.ToSbyte(salt));
             Crypto crypto = new Crypto();
             crypto.Cipher = "aes-128-ctr";
             crypto.Cipherparams = cipherParams;
@@ -142,9 +133,9 @@ namespace LaksaCsharp.Crypto
             public int R { get; set; } = 8;
             public int P { get; set; } = 1;
             public int Dklen { get; set; } = 32;
-            public byte[] Salt { get; set; }
+            public sbyte[] Salt { get; set; }
 
-            public Kdfparams(byte[] salt)
+            public Kdfparams(sbyte[] salt)
             {
                 this.Salt = salt;
             }
@@ -187,15 +178,8 @@ namespace LaksaCsharp.Crypto
             byte[] encryptKey = new byte[16];
             Array.Copy(derivedKey, encryptKey, 16);
 
-            //TODO 加密方法待完善
-            System.Security.Cryptography.RijndaelManaged rm = new System.Security.Cryptography.RijndaelManaged
-            {
-                Key = encryptKey,
-                Mode = CipherMode.CBC,
-                Padding = System.Security.Cryptography.PaddingMode.None
-            };
-            System.Security.Cryptography.ICryptoTransform cTransform = rm.CreateEncryptor();
-            byte[] ciphertextByte = cTransform.TransformFinalBlock(ciphertext, 0, ciphertext.Length);
+            KeyStoreCrypto cry = new KeyStoreCrypto();
+            byte[] ciphertextByte = cry.GenerateAesCtrCipher(iv, encryptKey, ciphertext);
 
             return ByteUtil.ByteArrayToHexString(ciphertextByte);
 
