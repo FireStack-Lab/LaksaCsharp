@@ -136,7 +136,7 @@ namespace LaksaCsharp.Jsonrpc
             Req<object> req = new Req<object>();
             req.Id = "1";
             req.Jsonrpc = "2.0";
-            req.Method = "GetDSBlockRate";
+            req.Method = "DSBlockListing";
             req.Params = new object[] { 1 };
 
             RestClient client = new RestClient(url);
@@ -182,6 +182,24 @@ namespace LaksaCsharp.Jsonrpc
             IRestResponse response = client.Post(request);
 
             Rep<TxBlock> rep = JsonConvert.DeserializeObject<Rep<TxBlock>>(response.Content);
+
+            return rep.Result;
+        }
+
+        public string GetNumTxBlocks()
+        {
+            Req<string> req = new Req<string>();
+            req.Id = "1";
+            req.Jsonrpc = "2.0";
+            req.Method = "GetNumTxBlocks";
+            req.Params = new string[] { "" };
+
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(req);
+            IRestResponse response = client.Post(request);
+
+            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
 
             return rep.Result;
         }
