@@ -131,7 +131,23 @@ namespace LaksaCsharp.Jsonrpc
             return rep.Result;
         }
 
+        public BlockList GetDSBlockListing()
+        {
+            Req<object> req = new Req<object>();
+            req.Id = "1";
+            req.Jsonrpc = "2.0";
+            req.Method = "GetDSBlockRate";
+            req.Params = new object[] { 1 };
 
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(req);
+            IRestResponse response = client.Post(request);
+
+            Rep<BlockList> rep = JsonConvert.DeserializeObject<Rep<BlockList>>(response.Content);
+
+            return rep.Result;
+        }
 
         public DsBlock GetDsBlock(string blockNumber)
         {
