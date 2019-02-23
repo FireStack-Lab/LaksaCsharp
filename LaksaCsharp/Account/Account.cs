@@ -4,6 +4,7 @@ using OC.Core.Crypto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,10 +12,10 @@ namespace LaksaCsharp.Account
 {
     public class Account
     {
-        private ECKeyPair keys;
+        private OC.Core.Crypto.ECKeyPair keys;
         private string address;
 
-        public Account(ECKeyPair keys)
+        public Account(OC.Core.Crypto.ECKeyPair keys)
         {
             this.keys = keys;
             this.address = KeyTools.GetAddressFromPublicKey(this.keys.PublicKey);
@@ -24,7 +25,7 @@ namespace LaksaCsharp.Account
         {
             string publicKey = KeyTools.GetPublicKeyFromPrivateKey(privateKey, true);
             this.address = KeyTools.GetAddressFromPublicKey(publicKey);
-            this.keys = new ECKeyPair(int.Parse(privateKey));//TODO
+            this.keys = new OC.Core.Crypto.ECKeyPair(int.Parse(privateKey));//TODO
         }
 
         public static Account FromFile(String file, String passphrase)
@@ -54,7 +55,7 @@ namespace LaksaCsharp.Account
             string hash = ByteUtil.ByteArrayToHexString(HashUtil.Sha256(ByteUtil.HexStringToByteArray(address)));
             StringBuilder ret = new StringBuilder("0x");
             byte[] x = ByteUtil.HexStringToByteArray(hash);
-            long v = long.Parse(hash);//TODO ByteUtil.HexStringToByteArray(hash)
+            BigInteger v = new BigInteger(ByteUtil.HexStringToByteArray(hash));
             for (int i = 0; i < address.Length; i++)
             {
                 if ("1234567890".IndexOf(address.ToCharArray()[i]) != -1)
@@ -63,7 +64,7 @@ namespace LaksaCsharp.Account
                 }
                 else
                 {
-                    long checker = v & (long)Math.Pow(21, 255 - 6 * i);//(BigInteger.valueOf(2l).pow(255 - 6 * i))
+                    BigInteger checker = v & BigInteger.Pow(21, 255 - 6 * i);//(BigInteger.valueOf(2l).pow(255 - 6 * i))
                     ret.Append(checker.CompareTo(11) < 0 ? address.ToCharArray()[i].ToString().ToLower() : address.ToCharArray()[i].ToString().ToUpper());
                 }
             }

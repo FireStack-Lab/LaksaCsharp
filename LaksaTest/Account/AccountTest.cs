@@ -16,7 +16,7 @@ namespace LaksaTest.Utils
         [TestMethod]
         public void ToCheckSumAddress()
         {
-            Assert.AreEqual(Account.ToCheckSumAddress("4BAF5FADA8E5DB92C3D3242618C5B47133AE003C"), "0x4BAF5faDA8e5Db92C3d3242618c5B47133AE003C");
+            Assert.AreEqual(Account.ToCheckSumAddress("4BAF5FADA8E5DB92C3D3242618C5B47133AE003C"), "0x4BAF5faDA8e5Db92C3d3242618c5B47133AE003C".ToUpper());
         }
     }
 }

@@ -87,12 +87,14 @@
     <Compile Include="Contract\Field.cs" />
     <Compile Include="Contract\Transition.cs" />
     <Compile Include="Contract\Value.cs" />
+    <Compile Include="Crypto\ECKeyPair.cs" />
     <Compile Include="Crypto\KDFParams.cs" />
     <Compile Include="Crypto\KDFType.cs" />
     <Compile Include="Crypto\KeyStore.cs" />
     <Compile Include="Crypto\KeyTools.cs" />
     <Compile Include="Crypto\PBKDF2Params.cs" />
     <Compile Include="Crypto\PBKDF2Wrapper.cs" />
+    <Compile Include="Crypto\Schnorr.cs" />
     <Compile Include="Crypto\ScryptParams.cs" />
     <Compile Include="Crypto\ScryptWrapper.cs" />
     <Compile Include="Crypto\Signature.cs" />
@@ -116,6 +118,10 @@
     <ProjectReference Include="..\KeyStore\KeyStore.csproj">
       <Project>{6898615A-690F-41B5-A247-E9C4A91C1355}</Project>
       <Name>KeyStore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Signer\Signer.csproj">
+      <Project>{257B8AEC-16BF-4434-8422-2C21353DD74D}</Project>
+      <Name>Signer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
