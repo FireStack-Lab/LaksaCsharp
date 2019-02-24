@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Math;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace LaksaCsharp.Crypto
 {
     public class Signature
     {
-        public long R { get; set; }
-        public long S { get; set; }
+        public BigInteger R { get; set; }
+        public BigInteger S { get; set; }
     }
 }

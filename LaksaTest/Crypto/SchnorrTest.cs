@@ -36,11 +36,11 @@ namespace LaksaTest.Crypto
             bool res = Schnorr.Verify(ByteUtil.HexStringToByteArray(msg), signature, pubKeyPoint);
 
             Signature sig = new Signature();
-            sig.R = new BigInteger(r, 16).LongValue;
-            sig.S = new BigInteger(s, 16).LongValue;
+            sig.R = new BigInteger(r, 16);
+            sig.S = new BigInteger(s, 16);
 
-            Assert.IsTrue(signature.R == sig.R);
-            Assert.IsTrue(signature.S == sig.S);
+            Assert.IsTrue(signature.R.Equals(sig.R));
+            Assert.IsTrue(signature.S.Equals(sig.S));
             Assert.IsTrue(res);
         }
     }

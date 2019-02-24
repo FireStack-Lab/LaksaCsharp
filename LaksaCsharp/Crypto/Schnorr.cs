@@ -98,7 +98,7 @@ namespace LaksaCsharp.Crypto
                 return null;
             }
 
-            return new Signature() { R = r.LongValue, S = s.LongValue };
+            return new Signature() { R = r, S = s };
         }
 
         static private BigInteger Hash(ECPoint q, ECPoint pubKey, byte[] msg)
@@ -121,15 +121,15 @@ namespace LaksaCsharp.Crypto
 
         public static bool Verify(byte[] msg, Signature sig, ECPoint publicKey)
         {
-            if (sig.R == 0 || sig.S == 0)
+            if (sig.R == BigInteger.Zero || sig.S == BigInteger.Zero)
             {
                 throw new Exception("Invalid R or S value: cannot be zero.");
             }
 
-            if (sig.R == -1 || sig.S == -1)
+            /*if (sig.R == -1 || sig.S == -1)
             {
                 throw new Exception("Invalid R or S value: cannot be negative.");
-            }
+            }*/
 
             if (publicKey.Curve != (secp256k1.Curve))
             {
@@ -141,8 +141,8 @@ namespace LaksaCsharp.Crypto
                 throw new Exception("Invalid public key.");
             }
 
-            ECPoint l = publicKey.Multiply(BigInteger.ValueOf(sig.R));
-            ECPoint r = secp256k1.G.Multiply(BigInteger.ValueOf(sig.S));
+            ECPoint l = publicKey.Multiply(sig.R);
+            ECPoint r = secp256k1.G.Multiply(sig.S);
             ECPoint Q = l.Add(r);
 
             if (Q.IsInfinity || !Q.IsValid())
@@ -157,7 +157,7 @@ namespace LaksaCsharp.Crypto
                 throw new Exception("Invalid hash.");
             }
 
-            return r1.LongValue == sig.R;
+            return r1.Equals(sig.R);
         }
 
         private static SecureRandom GetDRBG(byte[] message)
