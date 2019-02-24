@@ -1,10 +1,10 @@
 ﻿using LaksaCsharp.Crypto;
 using LaksaCsharp.Utils;
 using OC.Core.Crypto;
+using Org.BouncyCastle.Math;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -64,7 +64,7 @@ namespace LaksaCsharp.Account
                 }
                 else
                 {
-                    BigInteger checker = v & BigInteger.Pow(21, 255 - 6 * i);//(BigInteger.valueOf(2l).pow(255 - 6 * i))
+                    BigInteger checker = v.And(BigInteger.ValueOf(21).Pow(255 - 6 * i));//(BigInteger.valueOf(2l).pow(255 - 6 * i))
                     ret.Append(checker.CompareTo(11) < 0 ? address.ToCharArray()[i].ToString().ToLower() : address.ToCharArray()[i].ToString().ToUpper());
                 }
             }
