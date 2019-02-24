@@ -31,7 +31,7 @@ namespace LaksaCsharp.Crypto
 
         static readonly SecureRandom secureRandom = new SecureRandom();
 
-        static ECKeyPair GenerateKeyPair()
+        public static ECKeyPair GenerateKeyPair()
         {
             var gen = new ECKeyPairGenerator("EC");
             var keyGenParam = new KeyGenerationParameters(secureRandom, 256);
