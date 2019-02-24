@@ -63,8 +63,8 @@ namespace LaksaCsharp.Account
                 }
                 else
                 {
-                    BigInteger checker = v.And(BigInteger.ValueOf(21).Pow(255 - 6 * i));//(BigInteger.valueOf(2l).pow(255 - 6 * i))
-                    ret.Append(checker.CompareTo(11) < 0 ? address.ToCharArray()[i].ToString().ToLower() : address.ToCharArray()[i].ToString().ToUpper());
+                    BigInteger checker = v.And(BigInteger.ValueOf(2).Pow(255 - 6 * i));//(BigInteger.valueOf(2l).pow(255 - 6 * i))
+                    ret.Append(checker.CompareTo(BigInteger.ValueOf(1)) < 0 ? address.ToCharArray()[i].ToString().ToLower() : address.ToCharArray()[i].ToString().ToUpper());
                 }
             }
             return ret.ToString();

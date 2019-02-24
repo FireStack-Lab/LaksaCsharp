@@ -24,7 +24,7 @@ namespace LaksaTest.Crypto
                     ByteUtil.HexStringToByteArray(param.Salt), param.Count, param.DkLen);
             byte[] macArray = HashUtil.GenerateMac(bytes, ByteUtil.HexStringToByteArray("dc55047d51f795509ffb6969db837a4481887ccfb6bfb7c259fb77b19078c2a4"));
             Console.WriteLine(ByteUtil.ByteArrayToHexString(macArray));
-            Assert.AreEqual(ByteUtil.ByteArrayToHexString(macArray).Replace(" ", "").ToLower(), "dedc361c53c421974c2811f7f989bc530aebf9a90c487b4161e0e54ae6faba31");
+            Assert.AreEqual(ByteUtil.ByteArrayToHexString(macArray).ToLower(), "dedc361c53c421974c2811f7f989bc530aebf9a90c487b4161e0e54ae6faba31");
 
         }
     }
