@@ -42,14 +42,6 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OC.Core, Version=2.0.0.17347, Culture=neutral, PublicKeyToken=21d5b409dafb75d2, processorArchitecture=MSIL">
-      <HintPath>..\packages\OC.Core.2.0.0\lib\net40\OC.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OC.Core.Crypto, Version=1.4.13.38223, Culture=neutral, PublicKeyToken=21d5b409dafb75d2, processorArchitecture=MSIL">
-      <HintPath>..\packages\OC.Core.Crypto.1.4.13\lib\net40\OC.Core.Crypto.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="RestSharp, Version=106.6.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.6.7\lib\net452\RestSharp.dll</HintPath>
       <Private>True</Private>

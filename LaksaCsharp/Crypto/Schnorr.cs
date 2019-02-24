@@ -1,10 +1,10 @@
 ﻿using LaksaCsharp.Utils;
-using OC.Core.Crypto;
 using Org.BouncyCastle.Asn1.X9;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Digests;
 using Org.BouncyCastle.Crypto.Generators;
 using Org.BouncyCastle.Crypto.Macs;
+using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Crypto.Prng;
 using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Math.EC;
@@ -29,15 +29,19 @@ namespace LaksaCsharp.Crypto
 
         static private int ENT_BITS = 256; // 32 bytes of entropy require for the k value
 
-        /*static ECKeyPair GenerateKeyPair()
-        {
-            ECKeyPairGenerator keyPairGenerator = new ECKeyPairGenerator();
-            AsymmetricCipherKeyPair keyPair = keyPairGenerator.GenerateKeyPair();
-            AsymmetricKeyParameter privateKey = keyPair.Private;
-            AsymmetricKeyParameter publicKey = keyPair.Public;
+        static readonly SecureRandom secureRandom = new SecureRandom();
 
-            return new ECKeyPair(privateKey., new BigInteger(1, publicKey.getQ().getEncoded(true)));
-        }*/
+        static ECKeyPair GenerateKeyPair()
+        {
+            var gen = new ECKeyPairGenerator("EC");
+            var keyGenParam = new KeyGenerationParameters(secureRandom, 256);
+            gen.Init(keyGenParam);
+            var keyPair = gen.GenerateKeyPair();
+            var d = ((ECPrivateKeyParameters)keyPair.Private).D;
+            var q = ((ECPublicKeyParameters)keyPair.Public).Q;
+
+            return new ECKeyPair(d, new BigInteger(1, q.GetEncoded(true)));
+        }
 
 
         public static Signature Sign(ECKeyPair kp, byte[] message)

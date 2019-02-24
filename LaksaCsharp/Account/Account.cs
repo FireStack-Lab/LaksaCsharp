@@ -1,6 +1,5 @@
 ﻿using LaksaCsharp.Crypto;
 using LaksaCsharp.Utils;
-using OC.Core.Crypto;
 using Org.BouncyCastle.Math;
 using System;
 using System.Collections.Generic;
@@ -12,41 +11,41 @@ namespace LaksaCsharp.Account
 {
     public class Account
     {
-        private OC.Core.Crypto.ECKeyPair keys;
+        private ECKeyPair keys;
         private string address;
 
-        public Account(OC.Core.Crypto.ECKeyPair keys)
+        public Account(ECKeyPair keys)
         {
             this.keys = keys;
-            this.address = KeyTools.GetAddressFromPublicKey(this.keys.PublicKey);
+            this.address = KeyTools.GetAddressFromPublicKey(this.keys.PublicKey.ToString(16));
         }
 
-        public Account(String privateKey)
+        public Account(string privateKey)
         {
             string publicKey = KeyTools.GetPublicKeyFromPrivateKey(privateKey, true);
             this.address = KeyTools.GetAddressFromPublicKey(publicKey);
-            this.keys = new OC.Core.Crypto.ECKeyPair(int.Parse(privateKey));//TODO
+            this.keys = new ECKeyPair(new BigInteger(privateKey, 16), new BigInteger(publicKey, 16));
         }
 
-        public static Account FromFile(String file, String passphrase)
+        public static Account FromFile(string file, string passphrase)
         {
             string privateKey = KeyTools.DecryptPrivateKey(file, passphrase);
             return new Account(privateKey);
         }
 
-        public string ToFile(String privateKey, String passphrase, KDFType type)
+        public string ToFile(string privateKey, string passphrase, KDFType type)
         {
             return KeyTools.EencryptPrivateKey(privateKey, passphrase, type);
         }
 
         public string GetPublicKey()
         {
-            return ByteUtil.ByteArrayToHexString(Encoding.Default.GetBytes(this.keys.PublicKey));
+            return ByteUtil.ByteArrayToHexString(this.keys.PublicKey.ToByteArray());
         }
 
         public string GetPrivateKey()
         {
-            return ByteUtil.ByteArrayToHexString(Encoding.Default.GetBytes(this.keys.PrivateKey));
+            return ByteUtil.ByteArrayToHexString(this.keys.PrivateKey.ToByteArray());
         }
 
         public static string ToCheckSumAddress(string address)
