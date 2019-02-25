@@ -14,6 +14,17 @@ namespace LaksaCsharp.Account
         private ECKeyPair keys;
         private string address;
 
+        public ECKeyPair Keys
+        {
+            get { return keys; }
+        }
+
+        public string Address
+        {
+            get { return address; }
+        }
+
+
         public Account(ECKeyPair keys)
         {
             this.keys = keys;

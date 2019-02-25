@@ -34,7 +34,7 @@ namespace LaksaCsharp.Crypto
             CURVE = new ECDomainParameters(CURVE_PARAMS.Curve, CURVE_PARAMS.G, CURVE_PARAMS.N, CURVE_PARAMS.H);
         }
 
-        public static ECKeyPair GeneratePrivateKey()
+        public static ECKeyPair GenerateKeyPair()
         {
             return Schnorr.GenerateKeyPair();
         }

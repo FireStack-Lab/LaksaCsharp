@@ -75,6 +75,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Account\AccountTest.cs" />
+    <Compile Include="Account\WalletTest.cs" />
     <Compile Include="Crypto\PBKDF2WrapperTest.cs" />
     <Compile Include="Crypto\KeyStoreTest .cs" />
     <Compile Include="Crypto\SchnorrTest.cs" />

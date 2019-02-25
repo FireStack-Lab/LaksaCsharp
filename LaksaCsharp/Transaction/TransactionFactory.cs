@@ -30,7 +30,7 @@ namespace LaksaCsharp.Transaction
             };
         }
 
-        public static CreateTxResult sendTransaction(Transaction signedTx)
+        public static CreateTxResult CreateTransaction(Transaction signedTx)
         {
             return signedTx.Provider.CreateTransaction(signedTx.ToTransactionPayload());
         }
