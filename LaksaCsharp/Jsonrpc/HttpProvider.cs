@@ -20,402 +20,147 @@ namespace LaksaCsharp.Jsonrpc
             this.url = url;
         }
 
-        public string GetNetworkId()
+        private Rep<R> Send<R, P>(string method, P para)
         {
-            Req<string> req = new Req<string>();
+            Req<P> req = new Req<P>();
             req.Id = "1";
             req.Jsonrpc = "2.0";
-            req.Method = "GetNetworkId";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public BlockchainInfo GetBlockchainInfo()
-        {
-
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetBlockchainInfo";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<BlockchainInfo> rep = JsonConvert.DeserializeObject<Rep<BlockchainInfo>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public Rep<ShardingStructure> GetShardingStructure()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetShardingStructure";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<ShardingStructure> rep = JsonConvert.DeserializeObject<Rep<ShardingStructure>>(response.Content);
-            return rep;
-        }
-
-
-        public BlockList GetDSBlockListing(int pageNumber)
-        {
-            Req<int> req = new Req<int>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "DSBlockListing";
-            req.Params = new int[] { pageNumber };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<BlockList> rep = JsonConvert.DeserializeObject<Rep<BlockList>>(response.Content);
-
-            return rep.Result;
-        }
-
-
-        public BlockList GetTxBlockListing(int pageNumber)
-        {
-            Req<int> req = new Req<int>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "TxBlockListing";
-            req.Params = new int[] { pageNumber };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<BlockList> rep = JsonConvert.DeserializeObject<Rep<BlockList>>(response.Content);
-
-            return rep.Result;
-        }
-
-
-        public string GetNumDSBlocks()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetNumDSBlocks";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public double GetDSBlockRate()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetDSBlockRate";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<double> rep = JsonConvert.DeserializeObject<Rep<double>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public BlockList GetDSBlockListing()
-        {
-            Req<object> req = new Req<object>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "DSBlockListing";
-            req.Params = new object[] { 1 };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<BlockList> rep = JsonConvert.DeserializeObject<Rep<BlockList>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public DsBlock GetDsBlock(string blockNumber)
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetDsBlock";
-            req.Params = new string[] { blockNumber };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<DsBlock> rep = JsonConvert.DeserializeObject<Rep<DsBlock>>(response.Content);
-
-            return rep.Result;
-        }
-
-
-        public TxBlock GetTxBlock(String blockNumber)
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetTxBlock";
-            req.Params = new string[] { blockNumber };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<TxBlock> rep = JsonConvert.DeserializeObject<Rep<TxBlock>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public string GetNumTxBlocks()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetNumTxBlocks";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public double GetTxBlockRate()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetTxBlockRate";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<double> rep = JsonConvert.DeserializeObject<Rep<double>>(response.Content);
-
-            return rep.Result;
-        }
-
-
-        public DsBlock GetLatestDsBlock()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetBlockchainInfo";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<DsBlock> rep = JsonConvert.DeserializeObject<Rep<DsBlock>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public string GetNumTransactions()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetNumTransactions";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public int GetTransactionRate()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetTransactionRate";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-            Rep<int> rep = JsonConvert.DeserializeObject<Rep<int>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public string GetCurrentMiniEpoch()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetCurrentMiniEpoch";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public string GetCurrentDSEpoch()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetCurrentDSEpoch";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public int GetPrevDifficulty()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetPrevDifficulty";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-            Rep<int> rep = JsonConvert.DeserializeObject<Rep<int>>(response.Content);
-
-            return rep.Result;
-        }
-
-        public Rep<int?> GetPrevDSDifficulty()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetPrevDSDifficulty";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-            Rep<int?> rep = JsonConvert.DeserializeObject<Rep<int?>>(response.Content);
-
-            return rep;
-        }
-
-        public TxBlock GetLatestTxBlock()
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetLatestTxBlock";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<TxBlock> rep = JsonConvert.DeserializeObject<Rep<TxBlock>>(response.Content);
-
-            return rep.Result;
-        }
-
-        //Account-related methods
-        public Rep<BalanceResult> GetBalance(string address)
-        {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetBalance";
-            req.Params = new string[] { address };
+            req.Method = method;
+            if (para != null)
+            {
+                req.Params = new P[] { para };
+            }
+            else
+            {
+                req.Params = new P[] { };
+            }
 
             RestClient client = new RestClient(url);
             RestRequest request = new RestRequest();
             request.JsonSerializer = new JsonSerialize();
             request.AddJsonBody(req);
             IRestResponse response = client.Post(request);
-            Rep<BalanceResult> rep = JsonConvert.DeserializeObject<Rep<BalanceResult>>(response.Content);
+
+            Rep<R> rep = JsonConvert.DeserializeObject<Rep<R>>(response.Content);
 
             return rep;
         }
 
+        public Rep<string> GetNetworkId()
+        {
+            return Send<string, string>("GetNetworkId", "");
+        }
+
+        public Rep<BlockchainInfo> GetBlockchainInfo()
+        {
+            return Send<BlockchainInfo, string>("GetBlockchainInfo", "");
+        }
+
+        public Rep<ShardingStructure> GetShardingStructure()
+        {
+            return Send<ShardingStructure, string>("GetShardingStructure", "");
+        }
+
+
+        public Rep<BlockList> GetDSBlockListing(int pageNumber)
+        {
+            return Send<BlockList, int>("DSBlockListing", pageNumber);
+        }
+
+
+        public Rep<BlockList> GetTxBlockListing(int pageNumber)
+        {
+            return Send<BlockList, int>("TxBlockListing", pageNumber);
+        }
+
+
+        public Rep<string> GetNumDSBlocks()
+        {
+            return Send<string, string>("GetNumDSBlocks", "");
+        }
+
+        public Rep<double> GetDSBlockRate()
+        {
+            return Send<double, string>("GetDSBlockRate", "");
+        }
+
+        public Rep<BlockList> GetDSBlockListing()
+        {
+            return Send<BlockList, object>("DSBlockListing", 1);
+        }
+
+        public Rep<DsBlock> GetDsBlock(string blockNumber)
+        {
+            return Send<DsBlock, string>("GetDsBlock", blockNumber);
+        }
+
+        public Rep<TxBlock> GetTxBlock(string blockNumber)
+        {
+            return Send<TxBlock, string>("GetTxBlock", blockNumber);
+        }
+
+        public Rep<string> GetNumTxBlocks()
+        {
+            return Send<string, string>("GetNumTxBlocks", "");
+        }
+
+        public Rep<double> GetTxBlockRate()
+        {
+            return Send<double, string>("GetTxBlockRate", "");
+        }
+
+
+        public Rep<DsBlock> GetLatestDsBlock()
+        {
+            return Send<DsBlock, string>("GetLatestDsBlock", "");
+        }
+
+        public Rep<string> GetNumTransactions()
+        {
+            return Send<string, string>("GetNumTransactions", "");
+        }
+
+        public Rep<int> GetTransactionRate()
+        {
+            return Send<int, string>("GetTransactionRate", "");
+        }
+
+        public Rep<string> GetCurrentMiniEpoch()
+        {
+            return Send<string, string>("GetCurrentMiniEpoch", "");
+        }
+
+        public Rep<string> GetCurrentDSEpoch()
+        {
+            return Send<string, string>("GetCurrentDSEpoch", "");
+        }
+
+        public Rep<int> GetPrevDifficulty()
+        {
+            return Send<int, string>("GetPrevDifficulty", "");
+        }
+
+        public Rep<int?> GetPrevDSDifficulty()
+        {
+            return Send<int?, string>("GetPrevDSDifficulty", "");
+        }
+
+        public Rep<TxBlock> GetLatestTxBlock()
+        {
+            return Send<TxBlock, string>("GetLatestTxBlock", "");
+        }
+
+        //Account-related methods
+        public Rep<BalanceResult> GetBalance(string address)
+        {
+            return Send<BalanceResult, string>("GetBalance", address);
+        }
+
 
         //Contract-related methods todo need test
-        public string GetSmartContractCode(String address)
+        public Rep<ContractResult> GetSmartContractCode(String address)
         {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetSmartContractCode";
-            req.Params = new string[] { address };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<ContractResult> rep = JsonConvert.DeserializeObject<Rep<ContractResult>>(response.Content);
-
-            return rep.Result.Code;
+            return Send<ContractResult, string>("GetSmartContractCode", address);
         }
 
         /*public List<Contract> GetSmartContracts(string address)
@@ -438,20 +183,7 @@ namespace LaksaCsharp.Jsonrpc
 
         public Rep<string> GetContractAddressFromTransactionID(string address)
         {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetContractAddressFromTransactionID";
-            req.Params = new string[] { address };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
-
-            return rep;
+            return Send<string, string>("GetContractAddressFromTransactionID", address);
         }
 
 
@@ -495,132 +227,40 @@ namespace LaksaCsharp.Jsonrpc
         }*/
 
         //Transaction-related methods
-        public CreateTxResult CreateTransaction(TransactionPayload payload)
+        public Rep<CreateTxResult> CreateTransaction(TransactionPayload payload)
         {
-            Req<TransactionPayload> req = new Req<TransactionPayload>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "CreateTransaction";
-            req.Params = new TransactionPayload[] { payload };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<CreateTxResult> rep = JsonConvert.DeserializeObject<Rep<CreateTxResult>>(response.Content);
-
-            return rep.Result;
-
+            return Send<CreateTxResult, TransactionPayload>("GetContractAddressFromTransactionID", payload);
         }
 
-        public string GetMinimumGasPrice()
+        public Rep<string> GetMinimumGasPrice()
         {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetMinimumGasPrice";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
-
-            return rep.Result;
+            return Send<string, string>("GetMinimumGasPrice", "");
         }
 
 
-        public Transaction.Transaction GetTransaction(string hash)
+        public Rep<Transaction.Transaction> GetTransaction(string hash)
         {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetTransaction";
-            req.Params = new string[] { hash };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<Transaction.Transaction> rep = JsonConvert.DeserializeObject<Rep<Transaction.Transaction>>(response.Content);
-
-            return rep.Result;
+            return Send<Transaction.Transaction, string>("GetTransaction", hash);
         }
 
-        public TransactionList GetRecentTransactions()
+        public Rep<TransactionList> GetRecentTransactions()
         {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetRecentTransactions";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<TransactionList> rep = JsonConvert.DeserializeObject<Rep<TransactionList>>(response.Content);
-
-            return rep.Result;
+            return Send<TransactionList, string>("GetRecentTransactions", "");
         }
 
         public Rep<List<List<string>>> GetTransactionsForTxBlock(string blockNum)
         {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetTransactionsForTxBlock";
-            req.Params = new string[] { blockNum };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<List<List<string>>> rep = JsonConvert.DeserializeObject<Rep<List<List<string>>>>(response.Content);
-
-            return rep;
+            return Send<List<List<string>>, string>("GetTransactionsForTxBlock", blockNum);
         }
 
         public Rep<string> GetNumTxnsTxEpoch()
         {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetNumTxnsTxEpoch";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
-
-            return rep;
+            return Send<string, string>("GetNumTxnsTxEpoch", "");
         }
 
         public Rep<string> GetNumTxnsDSEpoch()
         {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetNumTxnsDSEpoch";
-            req.Params = new string[] { "" };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<string> rep = JsonConvert.DeserializeObject<Rep<string>>(response.Content);
-
-            return rep;
+            return Send<string, string>("GetNumTxnsDSEpoch", "");
         }
     }
 
