@@ -81,7 +81,9 @@ namespace LaksaCsharp.Contract
         }
         private class Data
         {
+            [JsonProperty("_tag")]
             public Transition Tag { get; set; }
+            [JsonProperty("params")]
             public Value[] Params { get; set; }
         }
 
