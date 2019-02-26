@@ -89,7 +89,10 @@
     <Compile Include="BlockChain\TxBlockHeader.cs" />
     <Compile Include="Contract\ABI.cs" />
     <Compile Include="Contract\CallParams.cs" />
+    <Compile Include="Contract\Contract.cs" />
+    <Compile Include="Contract\ContractFactory.cs" />
     <Compile Include="Contract\ContractStatus.cs" />
+    <Compile Include="Contract\DeployParams.cs" />
     <Compile Include="Contract\Field.cs" />
     <Compile Include="Contract\Transition.cs" />
     <Compile Include="Contract\Value.cs" />

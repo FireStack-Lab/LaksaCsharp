@@ -116,7 +116,7 @@ namespace LaksaCsharp.Transaction
             Transaction response;
             try
             {
-                response = this.Provider.GetTransaction(txHash);
+                response = this.Provider.GetTransaction(txHash).Result;
             }
             catch (IOException e)
             {

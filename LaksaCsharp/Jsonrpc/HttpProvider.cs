@@ -187,44 +187,16 @@ namespace LaksaCsharp.Jsonrpc
         }
 
 
-        /* public List<Contract.State> GetSmartContractState(String address)
-         {
-             Req<string> req = new Req<string>();
-             req.Id = "1";
-             req.Jsonrpc = "2.0";
-             req.Method = "GetSmartContractState";
-             req.Params = new string[] { address
-        };
-
-             RestClient client = new RestClient(url);
-             RestRequest request = new RestRequest();
-             request.AddJsonBody(req);
-             IRestResponse response = client.Post(request);
-
-             Rep<List<Contract.State>> rep = JsonConvert.DeserializeObject<Rep<List<Contract.State>>>(response.Content);
-
-             return rep.Result;
-
-         }*/
-
-        /*public List<Contract.State> GetSmartContractInit(string address)
+        public Rep<List<LaksaCsharp.BlockChain.State>> GetSmartContractState(String address)
         {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetSmartContractInit";
-            req.Params = new string[] { address
-        };
+            return Send<List<LaksaCsharp.BlockChain.State>, string>("GetSmartContractState", address);
 
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
+        }
 
-            Rep<List<Contract.State>> rep = JsonConvert.DeserializeObject<Rep<List<Contract.State>>>(response.Content);
-
-            return rep.Result;
-        }*/
+        public Rep<List<LaksaCsharp.BlockChain.State>> GetSmartContractInit(string address)
+        {
+            return Send<List<LaksaCsharp.BlockChain.State>, string>("GetSmartContractInit", address);
+        }
 
         //Transaction-related methods
         public Rep<CreateTxResult> CreateTransaction(TransactionPayload payload)
