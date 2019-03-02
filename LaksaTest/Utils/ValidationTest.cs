@@ -27,7 +27,7 @@ namespace LaksaTest.Utils
         public void IsValidChecksumAddress()
         {
             Assert.IsTrue(Validation.IsValidChecksumAddress("0x4BAF5faDA8e5Db92C3d3242618c5B47133AE003C"));
-            Assert.IsTrue(Validation.IsValidChecksumAddress("0x4BAF5FaDA8e5Db92C3d3242618c5B47133AE003C"));
+            Assert.IsFalse(Validation.IsValidChecksumAddress("0x4BAF5FaDA8e5Db92C3d3242618c5B47133AE003C"));
         }
     }
 }
