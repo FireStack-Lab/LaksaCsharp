@@ -176,7 +176,7 @@ namespace LaksaTest.Contract
             wallet.AddByPrivateKey("e19d05c5452598e24caad4a0d85a49146f7be089515c905ae6a19e8a578a6930");
             ContractFactory factory = new ContractFactory()
             {
-                Provider = new HttpProvider("https://dev-api.zilliqa.com/"),
+                Provider = new HttpProvider("https://api.zilliqa.com/"),
                 Signer = wallet
             };
 
