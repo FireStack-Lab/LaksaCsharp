@@ -39,6 +39,10 @@
       <HintPath>..\packages\BouncyCastle.1.8.4\lib\BouncyCastle.Crypto.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Hex, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Nethereum\Hex.dll</HintPath>
@@ -76,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Account\AccountTest.cs" />
     <Compile Include="Account\WalletTest.cs" />
+    <Compile Include="Contract\ContractTest.cs" />
     <Compile Include="Crypto\PBKDF2WrapperTest.cs" />
     <Compile Include="Crypto\KeyStoreTest .cs" />
     <Compile Include="Crypto\SchnorrTest.cs" />
@@ -86,7 +91,6 @@
     <Compile Include="Utils\ByteUtilTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contract\" />
     <Folder Include="Jsonrpc\" />
     <Folder Include="Proto\" />
   </ItemGroup>

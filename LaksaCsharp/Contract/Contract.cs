@@ -17,7 +17,7 @@ namespace LaksaCsharp.Contract
         public static String NIL_ADDRESS = "0000000000000000000000000000000000000000";
 
         private ContractFactory contractFactory;
-        private Value[] init;
+        private Values[] init;
         private string abi;
         private List<LaksaCsharp.BlockChain.State> state;
         private string address;
@@ -27,7 +27,7 @@ namespace LaksaCsharp.Contract
         private Wallet signer;
         private HttpProvider provider;
 
-        public Contract(ContractFactory factory, string code, string abi, string address, Value[] init, List<LaksaCsharp.BlockChain.State> state)
+        public Contract(ContractFactory factory, string code, string abi, string address, Values[] init, List<LaksaCsharp.BlockChain.State> state)
         {
             this.contractFactory = factory;
             this.provider = factory.Provider;
@@ -50,7 +50,7 @@ namespace LaksaCsharp.Contract
             }
         }
 
-        public Tuple<Transaction.Transaction, Contract> deploy(DeployParams param, int attempts, int interval)
+        public Tuple<Transaction.Transaction, Contract> Deploy(DeployParams param, int attempts, int interval)
         {
             if (string.IsNullOrEmpty(code) || init == null || init.Count() <= 0)
             {
@@ -84,10 +84,10 @@ namespace LaksaCsharp.Contract
             [JsonProperty("_tag")]
             public Transition Tag { get; set; }
             [JsonProperty("params")]
-            public Value[] Params { get; set; }
+            public Values[] Params { get; set; }
         }
 
-        public Transaction.Transaction Call(Transition transition, Value[] args, CallParams param, int attempts, int interval)
+        public Transaction.Transaction Call(Transition transition, Values[] args, CallParams param, int attempts, int interval)
         {
             if (string.IsNullOrEmpty(address))
             {
