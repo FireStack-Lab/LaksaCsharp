@@ -1,7 +1,7 @@
 ﻿using LaksaCsharp.Account;
 using LaksaCsharp.Jsonrpc;
 using LaksaCsharp.Transaction;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace LaksaTest.Account
 {
-    [TestClass]
+    [TestFixture]
     public class WalletTest
     {
-        [TestMethod]
+        [Test]
         public void Sign()
         {
             Wallet wallet = new Wallet();

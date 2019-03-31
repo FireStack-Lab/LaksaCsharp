@@ -1,7 +1,7 @@
 ﻿using LaksaCsharp.BlockChain;
 using LaksaCsharp.Jsonrpc;
 using LaksaCsharp.Transaction;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 namespace LaksaTest.Jsonrpc
 {
-    [TestClass]
+    [TestFixture]
     public class ProviderTest
     {
-        [TestMethod]
+        [Test]
         public void GetNetworkId()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -22,7 +22,7 @@ namespace LaksaTest.Jsonrpc
             Assert.AreEqual("1", networkId);
         }
 
-        [TestMethod]
+        [Test]
         public void GetDSBlockListing()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -30,7 +30,7 @@ namespace LaksaTest.Jsonrpc
             Assert.IsNotNull(blockList);
         }
 
-        [TestMethod]
+        [Test]
         public void GetTxBlockListing()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -38,7 +38,7 @@ namespace LaksaTest.Jsonrpc
             Assert.IsNotNull(blockList);
         }
 
-        [TestMethod]
+        [Test]
         public void GetBlockchainInfo()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -47,7 +47,7 @@ namespace LaksaTest.Jsonrpc
         }
 
 
-        [TestMethod]
+        [Test]
         public void GetDsBlock()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -57,7 +57,7 @@ namespace LaksaTest.Jsonrpc
         }
 
 
-        [TestMethod]
+        [Test]
         public void GetNumDSBlocks()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -66,7 +66,7 @@ namespace LaksaTest.Jsonrpc
         }
 
 
-        [TestMethod]
+        [Test]
         public void GetTxBlock()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -75,7 +75,7 @@ namespace LaksaTest.Jsonrpc
             Assert.AreEqual(3, txBlock.Body.MicroBlockInfos.Count());
         }
 
-        [TestMethod]
+        [Test]
         public void GetLatestDsBlock()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -83,7 +83,7 @@ namespace LaksaTest.Jsonrpc
             Assert.IsNotNull(dsBlock);
         }
 
-        [TestMethod]
+        [Test]
         public void GetLatestTxBlock()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -91,7 +91,7 @@ namespace LaksaTest.Jsonrpc
             Assert.IsNotNull(txBlock);
         }
 
-        [TestMethod]
+        [Test]
         public void GetBalance()
         {
             HttpProvider client = new HttpProvider("https://dev-api.zilliqa.com/");
@@ -99,7 +99,7 @@ namespace LaksaTest.Jsonrpc
             Assert.IsNotNull(balance.Balance);
         }
 
-        [TestMethod]
+        [Test]
         public void GetSmartContractCode()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -107,7 +107,7 @@ namespace LaksaTest.Jsonrpc
             Console.WriteLine(code);
         }
 
-        [TestMethod]
+        [Test]
         public void GetMinimumGasPrice()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -117,7 +117,7 @@ namespace LaksaTest.Jsonrpc
         }
 
 
-        [TestMethod]
+        [Test]
         public void GetTransaction()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -125,7 +125,7 @@ namespace LaksaTest.Jsonrpc
             Console.WriteLine(transaction);
         }
 
-        [TestMethod]
+        [Test]
         public void GetRecentTransactions()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -133,7 +133,7 @@ namespace LaksaTest.Jsonrpc
             Console.WriteLine(transactionList);
         }
 
-        [TestMethod]
+        [Test]
         public void GetSmartContractState()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
@@ -141,7 +141,7 @@ namespace LaksaTest.Jsonrpc
             Console.WriteLine(stateList);
         }
 
-        [TestMethod]
+        [Test]
         public void GetNumTxnsTxEpoch()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");

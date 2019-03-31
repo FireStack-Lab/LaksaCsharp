@@ -1,6 +1,6 @@
 ﻿using LaksaCsharp.Transaction;
 using LaksaCsharp.Utils;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace LaksaTest.Utils
 {
-    [TestClass]
+    [TestFixture]
     public class TransactionUtilTest
     {
 
-        [TestMethod]
+        [Test]
         public void EncodeTransactionProto()
         {
             TxParams txParams = new TxParams();

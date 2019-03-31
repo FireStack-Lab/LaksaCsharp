@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using LaksaCsharp.Utils;
 
 namespace LaksaTest.Utils
@@ -9,10 +9,10 @@ namespace LaksaTest.Utils
     /// <summary>
     /// ByteUtilTest 的摘要说明
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class ByteUtilTest
     {
-        [TestMethod]
+        [Test]
         public void HexStringToByteArray()
         {
             String hexString = "e19d05c5452598e24caad4a0d85a49146f7be089515c905ae6a19e8a578a6930";

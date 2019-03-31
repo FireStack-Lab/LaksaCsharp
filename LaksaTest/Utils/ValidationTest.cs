@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using LaksaCsharp.Utils;
 
 namespace LaksaTest.Utils
@@ -9,10 +9,10 @@ namespace LaksaTest.Utils
     /// <summary>
     /// ByteUtilTest 的摘要说明
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class ValidationTest
     {
-        [TestMethod]
+        [Test]
         public void IsByteString()
         {
             bool result = Validation.IsByteString("e9c49caf0d0bc9d7c769391e8bda2028f824cf3d", 40);
@@ -23,7 +23,7 @@ namespace LaksaTest.Utils
             Assert.IsFalse(result);
         }
 
-        [TestMethod]
+        [Test]
         public void IsValidChecksumAddress()
         {
             Assert.IsTrue(Validation.IsValidChecksumAddress("0x4BAF5faDA8e5Db92C3d3242618c5B47133AE003C"));

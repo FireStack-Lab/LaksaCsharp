@@ -1,6 +1,6 @@
 ﻿using LaksaCsharp.Crypto;
 using LaksaCsharp.Utils;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace LaksaTest.Crypto
 {
-    [TestClass]
+    [TestFixture]
     public class KeyStoreTest
     {
-        [TestMethod]
+        [Test]
         public void EncryptPrivateKey()
         {
             KeyStore keyStore = KeyStore.DefaultKeyStore();
@@ -22,7 +22,7 @@ namespace LaksaTest.Crypto
             Console.WriteLine(result);
         }
 
-        [TestMethod]
+        [Test]
         public void DecryptPrivateKey()
         {
             KeyStore keyStore = KeyStore.DefaultKeyStore();

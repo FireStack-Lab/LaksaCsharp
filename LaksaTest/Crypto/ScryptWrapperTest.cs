@@ -1,6 +1,6 @@
 ﻿using LaksaCsharp.Crypto;
 using LaksaCsharp.Utils;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace LaksaTest.Crypto
 {
-    [TestClass]
+    [TestFixture]
     public class ScryptWrapperTest
     {
-        [TestMethod]
+        [Test]
         public void GenerateDerivedScryptKey()
         {
             ScryptWrapper scryptWrapper = new ScryptWrapper();

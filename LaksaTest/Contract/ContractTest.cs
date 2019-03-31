@@ -3,7 +3,7 @@ using LaksaCsharp.BlockChain;
 using LaksaCsharp.Contract;
 using LaksaCsharp.Jsonrpc;
 using LaksaCsharp.Transaction;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Org.BouncyCastle.Math;
 using System;
 using System.Collections.Generic;
@@ -13,10 +13,10 @@ using System.Threading.Tasks;
 
 namespace LaksaTest.Contract
 {
-    [TestClass]
+    [TestFixture]
     public class ContractTest
     {
-        [TestMethod]
+        [Test]
         public void GetAddressForContract()
         {
             Transaction transaction = new Transaction();
@@ -27,7 +27,7 @@ namespace LaksaTest.Contract
             Assert.AreEqual(address.ToLower(), "8f14cb1735b2b5fba397bea1c223d65d12b9a887");
         }
 
-        [TestMethod]
+        [Test]
         public void Call()
         {
             String code = "scilla_version 0\n" +
@@ -111,7 +111,7 @@ namespace LaksaTest.Contract
             LaksaCsharp.Transaction.Transaction transitionResult = contract.Call(transition, (Values[])init.ToArray(), param, 300, 3);
         }
 
-        [TestMethod]
+        [Test]
         public void Deploy()
         {
             String code = "scilla_version 0\n" +
