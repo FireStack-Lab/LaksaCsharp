@@ -45,34 +45,6 @@ namespace LaksaCsharp.Crypto
             }
         }
 
-        /* public ECDSASignature sign(byte[] transactionHash)
-         {
-             ECDsaSigner signer = new ECDsaSigner(new HMacDsaKCalculator(new Sha256Digest()));
-
-             ECPrivateKeyParameters privKey = new ECPrivateKeyParameters(privateKey, Sign.CURVE);
-             signer.init(true, privKey);
-             BigInteger[] components = signer.generateSignature(transactionHash);
-
-             return new ECDSASignature(components[0], components[1]).toCanonicalised();
-         }*/
-
-        /*public static ECKeyPair create(KeyPair keyPair)
-        {
-            BCECPrivateKey privateKey = (BCECPrivateKey)keyPair.getPrivate();
-            BCECPublicKey publicKey = (BCECPublicKey)keyPair.getPublic();
-
-            BigInteger privateKeyValue = privateKey.getD();
-
-            // Ethereum does not use encoded public keys like bitcoin - see
-            // https://en.bitcoin.it/wiki/Elliptic_Curve_Digital_Signature_Algorithm for details
-            // Additionally, as the first bit is a constant prefix (0x04) we ignore this value
-            byte[] publicKeyBytes = publicKey.getQ().getEncoded(false);
-            BigInteger publicKeyValue =
-                    new BigInteger(1, Arrays.copyOfRange(publicKeyBytes, 1, publicKeyBytes.length));
-
-            return new ECKeyPair(privateKeyValue, publicKeyValue);
-        }*/
-
         public static ECKeyPair Create(BigInteger privateKey)
         {
             return new ECKeyPair(privateKey, PublicKeyFromPrivate(privateKey));

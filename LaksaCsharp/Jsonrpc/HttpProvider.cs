@@ -163,23 +163,10 @@ namespace LaksaCsharp.Jsonrpc
             return Send<ContractResult, string>("GetSmartContractCode", address);
         }
 
-        /*public List<Contract> GetSmartContracts(string address)
+        public Rep<List<Contract.Contract>> GetSmartContracts(string address)
         {
-            Req<string> req = new Req<string>();
-            req.Id = "1";
-            req.Jsonrpc = "2.0";
-            req.Method = "GetSmartContracts";
-            req.Params = new string[] { address };
-
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest();
-            request.AddJsonBody(req);
-            IRestResponse response = client.Post(request);
-
-            Rep<List<Contract>> rep = JsonConvert.DeserializeObject<Rep<List<Contract>>>(response.Content);
-
-            return rep.Result;
-        }*/
+            return Send<List<Contract.Contract>, string>("GetSmartContracts", address);
+        }
 
         public Rep<string> GetContractAddressFromTransactionID(string address)
         {
