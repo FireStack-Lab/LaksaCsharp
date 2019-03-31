@@ -94,8 +94,8 @@ namespace LaksaTest.Jsonrpc
         [TestMethod]
         public void GetBalance()
         {
-            HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
-            BalanceResult balance = client.GetBalance("E9C49CAF0D0BC9D7C769391E8BDA2028F824CF3D".ToLower()).Result;
+            HttpProvider client = new HttpProvider("https://dev-api.zilliqa.com/");
+            BalanceResult balance = client.GetBalance("9BFEC715A6BD658FCB62B0F8CC9BFA2ADE71434A".ToLower()).Result;
             Assert.IsNotNull(balance.Balance);
         }
 
@@ -153,7 +153,7 @@ namespace LaksaTest.Jsonrpc
 
             int n = 0;
 
-            while (true)
+            while (n < 2)
             {
                 String epoch = client.GetNumTxnsTxEpoch().Result;
                 Console.WriteLine(n + "th current epoch is: " + epoch);

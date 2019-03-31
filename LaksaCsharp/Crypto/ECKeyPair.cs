@@ -1,5 +1,4 @@
-﻿using Nethereum.Signer.Crypto;
-using Org.BouncyCastle.Asn1.X9;
+﻿using Org.BouncyCastle.Asn1.X9;
 using Org.BouncyCastle.Crypto.Digests;
 using Org.BouncyCastle.Crypto.EC;
 using Org.BouncyCastle.Crypto.Parameters;

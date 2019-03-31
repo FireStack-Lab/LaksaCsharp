@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,13 +39,6 @@
       <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Hex, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nethereum\Hex.dll</HintPath>
-    </Reference>
-    <Reference Include="KeyStore">
-      <HintPath>..\packages\Nethereum\KeyStore.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -52,10 +46,6 @@
     <Reference Include="RestSharp, Version=106.6.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.6.7\lib\net452\RestSharp.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="RLP, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nethereum\RLP.dll</HintPath>
     </Reference>
     <Reference Include="Signer">
       <HintPath>..\packages\Nethereum\Signer.dll</HintPath>
@@ -100,10 +90,12 @@
     <Compile Include="Crypto\KDFParams.cs" />
     <Compile Include="Crypto\KDFType.cs" />
     <Compile Include="Crypto\KeyStore.cs" />
+    <Compile Include="Crypto\KeyStoreCrypto.cs" />
     <Compile Include="Crypto\KeyTools.cs" />
     <Compile Include="Crypto\PBKDF2Params.cs" />
     <Compile Include="Crypto\PBKDF2Wrapper.cs" />
     <Compile Include="Crypto\Schnorr.cs" />
+    <Compile Include="Crypto\SCrypt.cs" />
     <Compile Include="Crypto\ScryptParams.cs" />
     <Compile Include="Crypto\ScryptWrapper.cs" />
     <Compile Include="Crypto\Signature.cs" />
