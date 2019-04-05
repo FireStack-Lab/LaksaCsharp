@@ -188,7 +188,7 @@ namespace LaksaCsharp.Jsonrpc
         //Transaction-related methods
         public Rep<CreateTxResult> CreateTransaction(TransactionPayload payload)
         {
-            return Send<CreateTxResult, TransactionPayload>("GetContractAddressFromTransactionID", payload);
+            return Send<CreateTxResult, TransactionPayload>("CreateTransaction", payload);
         }
 
         public Rep<string> GetMinimumGasPrice()
