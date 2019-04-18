@@ -18,5 +18,10 @@ namespace LaksaCsharp.Crypto
         {
             return ByteUtil.ByteArrayToHexString(R.ToByteArray()) + ByteUtil.ByteArrayToHexString(S.ToByteArray());
         }
+
+        public bool IsNull()
+        {
+            return R.Equals(BigInteger.Zero) && S.Equals(BigInteger.Zero);
+        }
     }
 }
