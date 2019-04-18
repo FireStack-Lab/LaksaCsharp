@@ -65,13 +65,9 @@ namespace LaksaCsharp.Crypto
 
         public static ECPoint publicPointFromPrivate(BigInteger privKey)
         {
-            /*
-             * TODO: FixedPointCombMultiplier currently doesn't support scalars longer than the group
-             * order, but that could change in future versions.
-             */
-            if (privKey.BitLength > CURVE.N.BitLength)
+            if (privKey.BitLength > CURVE.N.BitLength || privKey.BitLength < 1)
             {
-                privKey = privKey.Mod(CURVE.N);
+                throw new Exception("Invalid private key.");
             }
             return new FixedPointCombMultiplier().Multiply(CURVE.G, privKey);
         }
