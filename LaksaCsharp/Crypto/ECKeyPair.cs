@@ -71,6 +71,5 @@ namespace LaksaCsharp.Crypto
             }
             return new FixedPointCombMultiplier().Multiply(CURVE.G, privKey);
         }
-
     }
 }

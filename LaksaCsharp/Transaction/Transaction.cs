@@ -61,7 +61,7 @@ namespace LaksaCsharp.Transaction
                 Signature = this.Signature,
                 Code = this.Code,
                 Data = this.Data,
-                ToAddr = Account.Account.ToCheckSumAddress(this.ToAddr).Substring(0, 2)
+                ToAddr = Account.Account.ToCheckSumAddress(this.ToAddr).Substring(2)
             };
         }
 
