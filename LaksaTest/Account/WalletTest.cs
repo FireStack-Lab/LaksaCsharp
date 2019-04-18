@@ -28,11 +28,18 @@ namespace LaksaTest.Account
             transaction.GasLimit = "1";
             transaction.Code = "";
             transaction.Data = "";
-            transaction.Provider = new HttpProvider("https://api.zilliqa.com/");
+            transaction.Provider = new HttpProvider("https://dev-api.zilliqa.com/");
             transaction = wallet.Sign(transaction);
             Console.WriteLine("signature is: " + transaction.Signature);
             CreateTxResult result = TransactionFactory.CreateTransaction(transaction);
             Console.WriteLine(result);
+        }
+
+        [Test]
+        public void CreateAccount()
+        {
+            Wallet wallet = new Wallet();
+            Assert.NotNull(wallet.CreateAccount());
         }
     }
 }

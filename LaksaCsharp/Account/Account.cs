@@ -28,7 +28,7 @@ namespace LaksaCsharp.Account
         public Account(ECKeyPair keys)
         {
             this.keys = keys;
-            this.address = KeyTools.GetAddressFromPublicKey(this.keys.PublicKey.ToString(16));
+            this.address = KeyTools.GetAddressFromPublicKey(ByteUtil.ByteArrayToHexString(this.keys.PublicKey.ToByteArray()));
         }
 
         public Account(string privateKey)
