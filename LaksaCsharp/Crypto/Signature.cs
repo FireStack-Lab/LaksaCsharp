@@ -16,7 +16,29 @@ namespace LaksaCsharp.Crypto
 
         public override string ToString()
         {
-            return ByteUtil.ByteArrayToHexString(R.ToByteArray()) + ByteUtil.ByteArrayToHexString(S.ToByteArray());
+            string rHex = ByteUtil.ByteArrayToHexString(R.ToByteArray());
+            while (rHex.Length < 64)
+            {
+                rHex = "0" + rHex;
+            }
+
+            while (rHex.Length > 64 && rHex.StartsWith("0"))
+            {
+                rHex = rHex.Substring(1);
+            }
+
+            string sHex = ByteUtil.ByteArrayToHexString(S.ToByteArray());
+            while (sHex.Length < 64)
+            {
+                sHex = "0" + sHex;
+            }
+
+            while (sHex.Length > 64 && rHex.StartsWith("0"))
+            {
+                sHex = sHex.Substring(1);
+            }
+
+            return rHex + sHex;
         }
 
         public bool IsNull()

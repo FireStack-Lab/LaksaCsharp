@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,27 @@ namespace LaksaCsharp.Transaction
 {
     public class TransactionPayload
     {
+        [JsonProperty("version")]
         public int Version { get; set; }
+        [JsonProperty("nonce")]
         public int Nonce { get; set; }
-        public string ToAddr { get; set; }
+        [JsonProperty("amount")]
         public string Amount { get; set; }
-        public string PubKey { get; set; }
+        [JsonProperty("gasPrice")]
         public string GasPrice { get; set; }
+        [JsonProperty("gasLimit")]
         public string GasLimit { get; set; }
-        public string Code { get; set; }
-        public string Data { get; set; }
+        [JsonProperty("signature")]
         public string Signature { get; set; }
+        [JsonProperty("pubKey")]
+        public string PubKey { get; set; }
+        [JsonProperty("toAddr")]
+        public string ToAddr { get; set; }
+        [JsonProperty("code")]
+        public string Code { get; set; }
+        [JsonProperty("data")]
+        public string Data { get; set; }
+        [JsonProperty("priority")]
+        public bool Priority { get; set; }
     }
 }

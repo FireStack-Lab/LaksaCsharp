@@ -40,7 +40,6 @@ namespace LaksaCsharp.Jsonrpc
             request.JsonSerializer = new JsonSerialize();
             request.AddJsonBody(req);
             IRestResponse response = client.Post(request);
-
             Rep<R> rep = JsonConvert.DeserializeObject<Rep<R>>(response.Content);
 
             return rep;

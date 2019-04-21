@@ -1,6 +1,7 @@
 ﻿using LaksaCsharp.BlockChain;
 using LaksaCsharp.Jsonrpc;
 using LaksaCsharp.Utils;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,17 +14,28 @@ namespace LaksaCsharp.Transaction
 {
     public class Transaction
     {
+        [JsonProperty("id")]
         public string ID { get; set; }
+        [JsonProperty("version")]
         public string Version { get; set; }
+        [JsonProperty("nonce")]
         public string Nonce { get; set; }
+        [JsonProperty("amount")]
         public string Amount { get; set; }
+        [JsonProperty("gasPrice")]
         public string GasPrice { get; set; }
+        [JsonProperty("gasLimit")]
         public string GasLimit { get; set; }
+        [JsonProperty("signature")]
         public string Signature { get; set; }
         public TransactionReceipt Receipt { get; set; }
+        [JsonProperty("pubKey")]
         public string SenderPubKey { get; set; }
+        [JsonProperty("to")]
         public string ToAddr { get; set; }
+        [JsonProperty("code")]
         public string Code { get; set; }
+        [JsonProperty("data")]
         public string Data { get; set; }
 
         public HttpProvider Provider { get; set; }
@@ -61,7 +73,8 @@ namespace LaksaCsharp.Transaction
                 Signature = this.Signature,
                 Code = this.Code,
                 Data = this.Data,
-                ToAddr = Account.Account.ToCheckSumAddress(this.ToAddr).Substring(2)
+                ToAddr = Account.Account.ToCheckSumAddress(this.ToAddr).Substring(2),
+                Priority = false,
             };
         }
 

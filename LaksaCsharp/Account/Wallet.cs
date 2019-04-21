@@ -12,24 +12,22 @@ namespace LaksaCsharp.Account
     public class Wallet
     {
         private IDictionary<string, Account> accounts = new Dictionary<string, Account>();
-        private HttpProvider provider;
         private Account defaultAccount;
 
+        public HttpProvider Provider
+        {
+            get; set;
+        }
         public Wallet()
         {
             defaultAccount = null;
-            provider = new HttpProvider("https://api.zilliqa.com/");
-        }
-
-        public void setProvider(HttpProvider provider)
-        {
-            this.provider = provider;
+            Provider = new HttpProvider("https://api.zilliqa.com/");
         }
 
         public Wallet(IDictionary<string, Account> accounts, HttpProvider provider)
         {
             this.accounts = accounts;
-            this.provider = provider;
+            this.Provider = provider;
 
             if (accounts.Count > 0)
             {
@@ -137,7 +135,7 @@ namespace LaksaCsharp.Account
             {
                 try
                 {
-                    result = this.provider.GetBalance(signer.Address).Result;
+                    result = this.Provider.GetBalance(signer.Address).Result;
                     tx.Nonce = result.Nonce + 1;
                 }
                 catch (Exception e)
