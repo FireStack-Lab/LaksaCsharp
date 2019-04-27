@@ -33,7 +33,7 @@ namespace LaksaCsharp.Crypto
                 sHex = "0" + sHex;
             }
 
-            while (sHex.Length > 64 && rHex.StartsWith("0"))
+            while (sHex.Length > 64 && sHex.StartsWith("0"))
             {
                 sHex = sHex.Substring(1);
             }
