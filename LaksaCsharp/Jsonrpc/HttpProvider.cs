@@ -139,9 +139,9 @@ namespace LaksaCsharp.Jsonrpc
             return Send<int, string>("GetPrevDifficulty", "");
         }
 
-        public Rep<int?> GetPrevDSDifficulty()
+        public Rep<int> GetPrevDSDifficulty()
         {
-            return Send<int?, string>("GetPrevDSDifficulty", "");
+            return Send<int, string>("GetPrevDSDifficulty", "");
         }
 
         public Rep<TxBlock> GetLatestTxBlock()
