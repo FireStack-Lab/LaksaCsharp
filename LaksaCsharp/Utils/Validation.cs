@@ -15,6 +15,10 @@ namespace LaksaCsharp.Utils
             return Regex.IsMatch(str, "^(0x)?[0-9a-fA-F]{" + len + "}");
         }
 
+        public static bool IsBech32(string str)
+        {
+            return Regex.IsMatch(str, "^zil1[qpzry9x8gf2tvdw0s3jn54khce6mua7l]{38}");
+        }
         public static bool IsAddress(string address)
         {
             return IsByteString(address, 40);

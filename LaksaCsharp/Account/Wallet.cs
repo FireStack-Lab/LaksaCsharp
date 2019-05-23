@@ -1,6 +1,7 @@
 ﻿using LaksaCsharp.Crypto;
 using LaksaCsharp.Jsonrpc;
 using LaksaCsharp.Transaction;
+using LaksaCsharp.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,6 +102,25 @@ namespace LaksaCsharp.Account
 
         public Transaction.Transaction Sign(Transaction.Transaction transaction)
         {
+            if (transaction.ToAddr.ToUpper().StartsWith("0X"))
+            {
+                transaction.ToAddr = transaction.ToAddr.Substring(2);
+            }
+
+            if (!Validation.IsBech32(transaction.ToAddr) && !Validation.IsValidChecksumAddress("0x" + transaction.ToAddr))
+            {
+                throw new Exception("not checksum address or bech32");
+            }
+
+            if (Validation.IsBech32(transaction.ToAddr))
+            {
+                transaction.ToAddr = Bech32.FromBech32Address(transaction.ToAddr);
+            }
+
+            if (Validation.IsValidChecksumAddress("0x" + transaction.ToAddr))
+            {
+                transaction.ToAddr = "0x" + transaction.ToAddr;
+            }
 
             TxParams txParams = transaction.ToTransactionParam();
 

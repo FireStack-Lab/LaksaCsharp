@@ -80,5 +80,20 @@ namespace LaksaCsharp.Account
             }
             return ret.ToString();
         }
+
+        public static string NormaliseAddress(string address)
+        {
+            if (Validation.IsBech32(address))
+            {
+                return Bech32.FromBech32Address(address);
+            }
+
+            if (Validation.IsAddress(address))
+            {
+                return ToCheckSumAddress(address).Substring(2);
+            }
+
+            throw new Exception("Address format is invalid");
+        }
     }
 }

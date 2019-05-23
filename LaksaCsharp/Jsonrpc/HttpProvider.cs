@@ -1,5 +1,6 @@
 ﻿using LaksaCsharp.BlockChain;
 using LaksaCsharp.Transaction;
+using LaksaCsharp.Utils;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -152,7 +153,16 @@ namespace LaksaCsharp.Jsonrpc
         //Account-related methods
         public Rep<BalanceResult> GetBalance(string address)
         {
-            return Send<BalanceResult, string>("GetBalance", address);
+            Rep<BalanceResult> result = Send<BalanceResult, string>("GetBalance", address);
+            if (null == result.Result)
+            {
+                BalanceResult balanceResult = new BalanceResult();
+                balanceResult.Balance = "0";
+                balanceResult.Nonce = "0";
+                result.Result = balanceResult;
+            }
+
+            return result;
         }
 
 
@@ -199,6 +209,13 @@ namespace LaksaCsharp.Jsonrpc
         public Rep<Transaction.Transaction> GetTransaction(string hash)
         {
             return Send<Transaction.Transaction, string>("GetTransaction", hash);
+        }
+
+        public Rep<Transaction.Transaction> GetTransaction32(string hash)
+        {
+            Rep<Transaction.Transaction> rep = GetTransaction(hash);
+            rep.Result.ToAddr = Bech32.ToBech32Address(rep.Result.ToAddr);
+            return rep;
         }
 
         public Rep<TransactionList> GetRecentTransactions()

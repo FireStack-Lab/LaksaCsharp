@@ -31,7 +31,7 @@ namespace LaksaCsharp.Transaction
         public TransactionReceipt Receipt { get; set; }
         [JsonProperty("pubKey")]
         public string SenderPubKey { get; set; }
-        [JsonProperty("to")]
+        [JsonProperty("toAddr")]
         public string ToAddr { get; set; }
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -73,11 +73,16 @@ namespace LaksaCsharp.Transaction
                 Signature = this.Signature,
                 Code = this.Code,
                 Data = this.Data,
-                ToAddr = Account.Account.ToCheckSumAddress(this.ToAddr).Substring(2),
+                ToAddr = Account.Account.NormaliseAddress(this.ToAddr),
                 Priority = false,
             };
         }
 
+        public void MarshalToAddress()
+        {
+            byte[] address = Base58.Decode(this.ToAddr);
+            this.ToAddr = ByteUtil.ByteArrayToHexString(address);
+        }
         public byte[] Bytes()
         {
             TxParams txParams = ToTransactionParam();

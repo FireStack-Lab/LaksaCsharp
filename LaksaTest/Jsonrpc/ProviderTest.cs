@@ -95,15 +95,15 @@ namespace LaksaTest.Jsonrpc
         public void GetBalance()
         {
             HttpProvider client = new HttpProvider("https://dev-api.zilliqa.com/");
-            BalanceResult balance = client.GetBalance("9BFEC715A6BD658FCB62B0F8CC9BFA2ADE71434A".ToLower()).Result;
+            BalanceResult balance = client.GetBalance("4baf5fada8e5db92c3d3242618c5b47133ae003c".ToLower()).Result;
             Assert.IsNotNull(balance.Balance);
         }
 
         [Test]
         public void GetSmartContractCode()
         {
-            HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
-            String code = client.GetSmartContractCode("8cb841ef4f1f61d44271e167557e160434bd6d63").Result.Code;
+            HttpProvider client = new HttpProvider("https://dev-api.zilliqa.com/");
+            String code = client.GetSmartContractCode("4baf5fada8e5db92c3d3242618c5b47133ae003c").Result.Code;
             Console.WriteLine(code);
         }
 
@@ -121,14 +121,22 @@ namespace LaksaTest.Jsonrpc
         public void GetTransaction()
         {
             HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
-            Transaction transaction = client.GetTransaction("0e8d4d5cc5f5a7747fdb004e625da02f177208a93728f72f679ae55e0ba5bc70").Result;
+            Transaction transaction = client.GetTransaction("ce918e4c77ed40f3a23588bd3c380458b43be168935d468e2e6f680724e71474").Result;
+            Console.WriteLine(transaction);
+        }
+
+        [Test]
+        public void GetTransaction32()
+        {
+            HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
+            Transaction transaction = client.GetTransaction32("ce918e4c77ed40f3a23588bd3c380458b43be168935d468e2e6f680724e71474").Result;
             Console.WriteLine(transaction);
         }
 
         [Test]
         public void GetRecentTransactions()
         {
-            HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
+            HttpProvider client = new HttpProvider("https://dev-api.zilliqa.com/");
             TransactionList transactionList = client.GetRecentTransactions().Result;
             Console.WriteLine(transactionList);
         }

@@ -27,7 +27,7 @@ namespace LaksaCsharp.Utils
             {
                 sb.Append(Convert.ToString(b, 16).PadLeft(2, '0').PadRight(3, ' '));
             }
-            return sb.ToString().ToUpper().Replace(" ","");
+            return sb.ToString().ToUpper().Replace(" ", "");
         }
 
         public static sbyte[] ToSbyte(byte[] bytes)
@@ -47,7 +47,7 @@ namespace LaksaCsharp.Utils
 
         public static byte[] HexStringToByteArray(string hexString)
         {
-            hexString = hexString.Replace(" ", "");
+            hexString = hexString.Replace(" ", "").ToLower().Replace("0x", "");
             byte[] buffer = new byte[hexString.Length / 2];
             for (int i = 0; i < hexString.Length; i += 2)
             {
