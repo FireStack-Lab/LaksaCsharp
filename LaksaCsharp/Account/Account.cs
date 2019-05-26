@@ -88,7 +88,7 @@ namespace LaksaCsharp.Account
                 return Bech32.FromBech32Address(address);
             }
 
-            if (Validation.IsAddress(address))
+            if (Validation.IsValidChecksumAddress(address))
             {
                 return ToCheckSumAddress(address).Substring(2);
             }
