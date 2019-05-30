@@ -135,6 +135,10 @@ namespace LaksaCsharp.Crypto
                 throw new Exception("Invalid R or S value: cannot be negative.");
             }
 
+            if (sig.R.CompareTo(secp256k1.Curve.Order) >= 0 || sig.S.CompareTo(secp256k1.Curve.Order) >= 0) {
+                throw new Exception("Invalid R or S value: must be smaller than curve order");
+            }
+
             if (publicKey.Curve != (secp256k1.Curve))
             {
                 throw new Exception("The public key must be a point on secp256k1.");
