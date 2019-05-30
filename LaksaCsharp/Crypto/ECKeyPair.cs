@@ -65,7 +65,7 @@ namespace LaksaCsharp.Crypto
 
         public static ECPoint publicPointFromPrivate(BigInteger privKey)
         {
-            if (privKey.CompareTo(CURVE.N) != -1 || privKey.Equals(BigInteger.One))
+            if (privKey.CompareTo(CURVE.N) != -1 || privKey.Equals(BigInteger.Zero))
             {
                 throw new Exception("Invalid private key.");
             }
