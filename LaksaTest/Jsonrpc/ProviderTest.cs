@@ -100,6 +100,14 @@ namespace LaksaTest.Jsonrpc
         }
 
         [Test]
+        public void GetBalance32()
+        {
+            HttpProvider client = new HttpProvider("https://api.zilliqa.com/");
+            BalanceResult balance = client.GetBalance32("zil1z6rpmumewzrmdz44wu9hgvdwrs5xgptlzd6kec").Result;
+            Assert.NotNull(balance);
+        }
+
+        [Test]
         public void GetSmartContractCode()
         {
             HttpProvider client = new HttpProvider("https://dev-api.zilliqa.com/");

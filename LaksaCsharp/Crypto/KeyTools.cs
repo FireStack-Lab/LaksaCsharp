@@ -34,9 +34,23 @@ namespace LaksaCsharp.Crypto
             CURVE = new ECDomainParameters(CURVE_PARAMS.Curve, CURVE_PARAMS.G, CURVE_PARAMS.N, CURVE_PARAMS.H);
         }
 
+        public static string GeneratePrivateKey()
+        {
+            ECKeyPair keys = Schnorr.GenerateKeyPair();
+            return Numeric.ToHexStringNoPrefixZeroPadded(keys.PrivateKey, 64);
+        }
+
+        [Obsolete]
         public static ECKeyPair GenerateKeyPair()
         {
-            return Schnorr.GenerateKeyPair();
+            while (true)
+            {
+                ECKeyPair keyPair = Schnorr.GenerateKeyPair();
+                if (keyPair.PrivateKey.ToString(16).Length == 64)
+                {
+                    return keyPair;
+                }
+            }
         }
 
         public static string GetAddressFromPrivateKey(string privateKey)
@@ -70,9 +84,8 @@ namespace LaksaCsharp.Crypto
 
         public static string GetAddressFromPublicKey(string publicKey)
         {
-            byte[] data = GetAddressFromPublicKey(ByteUtil.HexStringToByteArray(publicKey));
-            string originAddress = ByteUtil.ByteArrayToHexString(data);
-            return originAddress.Substring(24);
+            byte[] address = GetAddressFromPublicKey(Numeric.HexStringToByteArray(publicKey));
+            return ByteUtil.ByteArrayToHexString(address).Substring(24);
         }
 
         public static byte[] GetAddressFromPublicKey(byte[] publicKey)

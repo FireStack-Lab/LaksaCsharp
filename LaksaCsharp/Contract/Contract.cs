@@ -35,7 +35,7 @@ namespace LaksaCsharp.Contract
             if (!string.IsNullOrEmpty(address))
             {
                 this.abi = abi;
-                this.address = address;
+                this.address = Account.Account.NormaliseAddress(address);
                 this.init = init;
                 this.state = state;
                 this.code = code;
@@ -68,7 +68,7 @@ namespace LaksaCsharp.Contract
             transaction.Code = this.code.Replace("/\\", "");
             transaction.Data = JsonConvert.SerializeObject(this.init);
             transaction.Provider = this.provider;
-            transaction = this.prepareTx(transaction, attempts, interval);
+            transaction = this.PrepareTx(transaction, attempts, interval);
             if (transaction.IsRejected())
             {
                 this.contractStatus = ContractStatus.Rejected;
@@ -106,12 +106,12 @@ namespace LaksaCsharp.Contract
             transaction.Code = this.code.Replace("/\\", "");
             transaction.Data = JsonConvert.SerializeObject(new Data() { Tag = transition, Params = args });
             transaction.Provider = this.provider;
-            return this.prepareTx(transaction, attempts, interval);
+            return this.PrepareTx(transaction, attempts, interval);
 
         }
 
 
-        public Transaction.Transaction prepareTx(Transaction.Transaction tx, int attempts, int interval)
+        public Transaction.Transaction PrepareTx(Transaction.Transaction tx, int attempts, int interval)
         {
             tx = signer.Sign(tx);
             try
@@ -154,7 +154,7 @@ namespace LaksaCsharp.Contract
 
             try
             {
-                return this.provider.GetSmartContractState(this.address).Result;
+                return this.provider.GetSmartContractState(this.address.ToLower().Replace("0x", "")).Result;
             }
             catch (IOException e)
             {

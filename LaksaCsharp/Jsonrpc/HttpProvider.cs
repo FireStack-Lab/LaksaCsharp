@@ -165,6 +165,10 @@ namespace LaksaCsharp.Jsonrpc
             return result;
         }
 
+        public Rep<BalanceResult> GetBalance32(string address)
+        {
+            return GetBalance(Bech32.FromBech32Address(address));
+        }
 
         //Contract-related methods todo need test
         public Rep<ContractResult> GetSmartContractCode(String address)

@@ -11,6 +11,7 @@ namespace LaksaCsharp.Jsonrpc
         public string Id { get; set; }
         public string Jsonrpc { get; set; }
         public T Result { get; set; }
+        public string Err { get; set; }
     }
 
 }

@@ -61,6 +61,11 @@ namespace LaksaCsharp.Account
 
         public static string ToCheckSumAddress(string address)
         {
+            if (!Validation.IsAddress(address))
+            {
+                throw new Exception("not a valid base 16 address");
+            }
+
             address = address.ToLower().Replace("0x", "");
             string hash = ByteUtil.ByteArrayToHexString(HashUtil.Sha256(ByteUtil.HexStringToByteArray(address)));
             StringBuilder ret = new StringBuilder("0x");
