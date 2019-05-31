@@ -130,10 +130,10 @@ namespace LaksaCsharp.Crypto
                 throw new Exception("Invalid R or S value: cannot be zero.");
             }
 
-            /*if (sig.R == -1 || sig.S == -1)
+            if (sig.R.SignValue == -1 || sig.S.SignValue == -1)
             {
                 throw new Exception("Invalid R or S value: cannot be negative.");
-            }*/
+            }
 
             if (publicKey.Curve != (secp256k1.Curve))
             {
