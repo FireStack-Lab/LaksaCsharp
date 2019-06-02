@@ -88,6 +88,11 @@ namespace LaksaCsharp.Account
 
         public static string NormaliseAddress(string address)
         {
+            if (address == Contract.Contract.NIL_ADDRESS)
+            {
+                return address;
+            }
+
             if (Validation.IsBech32(address))
             {
                 return Bech32.FromBech32Address(address);

@@ -14,7 +14,7 @@ namespace LaksaCsharp.Contract
 {
     public class Contract
     {
-        public static String NIL_ADDRESS = "0000000000000000000000000000000000000000";
+        public static string NIL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
         private ContractFactory contractFactory;
         private Values[] init;
@@ -66,7 +66,7 @@ namespace LaksaCsharp.Contract
             transaction.ToAddr = NIL_ADDRESS;
             transaction.Amount = "0";
             transaction.Code = this.code.Replace("/\\", "");
-            transaction.Data = JsonConvert.SerializeObject(this.init);
+            transaction.Data = JsonConvert.SerializeObject(this.init).Replace("/\\", "");
             transaction.Provider = this.provider;
             transaction = this.PrepareTx(transaction, attempts, interval);
             if (transaction.IsRejected())
@@ -82,12 +82,12 @@ namespace LaksaCsharp.Contract
         private class Data
         {
             [JsonProperty("_tag")]
-            public Transition Tag { get; set; }
+            public string Tag { get; set; }
             [JsonProperty("params")]
             public Values[] Params { get; set; }
         }
 
-        public Transaction.Transaction Call(Transition transition, Values[] args, CallParams param, int attempts, int interval)
+        public Transaction.Transaction Call(string transition, Values[] args, CallParams param, int attempts, int interval)
         {
             if (string.IsNullOrEmpty(address))
             {
